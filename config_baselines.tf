@@ -76,7 +76,7 @@ resource "aws_iam_role_policy_attachment" "recorder_read_policy" {
   count = var.config_baseline_enabled ? 1 : 0
 
   role       = one(aws_iam_role.recorder[*].id)
-  policy_arn = "arn:${data.aws_partition.current.partition}:iam::${data.aws_partition.current.partition}:policy/service-role/AWS_ConfigRole"
+  policy_arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/service-role/AWS_ConfigRole"
 }
 
 # --------------------------------------------------------------------------------------------------

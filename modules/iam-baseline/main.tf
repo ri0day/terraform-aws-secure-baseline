@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # Password Policy
 # --------------------------------------------------------------------------------------------------
-
+data "aws_partition" "current" {}
 resource "aws_iam_account_password_policy" "default" {
   count = var.create_password_policy ? 1 : 0
 
@@ -44,6 +44,6 @@ resource "aws_iam_role_policy_attachment" "support_policy" {
   count = var.create_support_role ? 1 : 0
 
   role       = aws_iam_role.support[0].id
-  policy_arn = "arn:aws:iam::aws:policy/AWSSupportAccess"
+  policy_arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AWSSupportAccess"
 }
 

@@ -43,8 +43,8 @@ variable "target_regions" {
   description = "A list of regions to set up with this module."
   type        = list(string)
   default = [
-    "cn-northwest-1"
-    "cn-north-1"
+    "cn-northwest-1",
+    "cn-north-1",
   ]
 }
 
@@ -377,19 +377,19 @@ variable "cloudtrail_s3_key_prefix" {
 variable "cloudtrail_s3_object_level_logging_buckets" {
   description = "The list of S3 bucket ARNs on which to enable object-level logging."
   type        = list(string)
-  default     = ["arn:aws:s3:::","arn:aws-cn:s3:::"] # All S3 buckets
+  default     = ["arn:aws-cn:s3:::"] # All S3 buckets
 }
 
 variable "cloudtrail_dynamodb_event_logging_tables" {
   description = "The list of DynamoDB table ARNs on which to enable event logging."
   type        = list(string)
-  default     = ["arn:aws:dynamodb","arn:aws-cn:dynamodb"] # All DynamoDB tables
+  default     = ["arn:aws-cn:dynamodb"] # All DynamoDB tables
 }
 
 variable "cloudtrail_lambda_invocation_logging_lambdas" {
   description = "The list of lambda ARNs on which to enable invocation logging."
   type        = list(string)
-  default     = ["arn:aws:lambda","arn:aws-cn:lambda"] # All lambdas
+  default     = ["arn:aws-cn:lambda"] # All lambdas
 }
 
 # --------------------------------------------------------------------------------------------------

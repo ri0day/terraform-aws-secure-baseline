@@ -1,6 +1,6 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
-
+data "aws_partition" "current" {}
 # --------------------------------------------------------------------------------------------------
 # The SNS topic to which CloudWatch alarms send events.
 # --------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "alarms-sns-policy" {
     condition {
       test     = "ArnLike"
       variable = "AWS:SourceArn"
-      values   = ["arn:aws:cloudwatch:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:alarm:*"]
+      values   = ["arn:${data.aws_partition.current.partition}:cloudwatch:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:alarm:*"]
     }
   }
 }

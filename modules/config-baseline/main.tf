@@ -1,5 +1,6 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
+data "aws_partition" "current" {}
 
 # --------------------------------------------------------------------------------------------------
 # Set up AWS Config recorder and let it publish results and send notifications.
@@ -30,7 +31,7 @@ data "aws_iam_policy_document" "config-sns-policy" {
     condition {
       test     = "ArnLike"
       variable = "aws:SourceArn"
-      values   = ["arn:aws:config:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*"]
+      values   = ["arn:${data.aws_partition.current.partition}:config:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*"]
     }
   }
 }

@@ -1,5 +1,4 @@
-# terraform-aws-secure-baseline  work with aws china environments
+# terraform-aws-secure-baseline tailored for aws china
 
-source repo: https://github.com/nozaq/terraform-aws-secure-baseline
-
+Source repo: https://github.com/nozaq/terraform-aws-secure-baseline
 
